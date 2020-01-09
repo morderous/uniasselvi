@@ -1,13 +1,16 @@
 <?php
 function Createdb(){
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "db_loja";
+    $dbhost = "localhost";
+    $dbuser = "root";
+    $dbpass = "";
+    $db = "db_loja";
+    $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
 
-    $con = mysqli_connect($servername, $username, $password, $dbname);
-
-    if (!$con){
-        die("Conexão falhou:" .mysqli_connect_error());
-    }
+    return $conn;
 }
+
+function CloseCon($conn)
+{
+    $conn -> close();
+}
+
