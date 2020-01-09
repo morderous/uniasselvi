@@ -1,7 +1,7 @@
 <?php
 
 require_once ("php/component.php");
-
+require_once ("php/operation.php");
 ?>
 <!doctype html>
 <html lang="pt">
@@ -21,7 +21,7 @@ require_once ("php/component.php");
 
 <main>
     <div class="container text-center">
-        <h1 class="py-4 bg-dark text-light rounded"><i class="fas fa-book-reader"></i> Cliente</h1>
+        <h1 class="py-4 bg-warning text-dark rounded"><i class="fas fa-book-reader"></i> Cliente</h1>
 
         <div class="d-flex justify-content-center">
             <form action=""method="post" class="w-50">
@@ -39,7 +39,7 @@ require_once ("php/component.php");
                         <?php inputElement("<i class=\"fas fa-envelope\"></i>", "E-mail do Cliente", "email_cliente", ""); ?>
                     </div>
                 </div>
-                <div class="d-flex">
+                <div class="d-flex justify-content-center">
                     <?php buttonElement("btn-create", "btn btn-success", "<i class=\"fas fa-user-plus\"></i>", "create","dat-toggle='tooltip' data-placement='bottom' title='Create'") ?>
                     <?php buttonElement("btn-read", "btn btn-primary", "<i class=\"fas fa-sync-alt\"></i>", "refresh","dat-toggle='tooltip' data-placement='bottom' title='Refresh'") ?>
                     <?php buttonElement("btn-update", "btn btn-light border", "<i class=\"fas fa-user-edit\"></i>", "update","dat-toggle='tooltip' data-placement='bottom' title='Update'") ?>
@@ -47,6 +47,30 @@ require_once ("php/component.php");
                 </div>
             </form>
         </div>
+            <div>
+                <!--tabela-->
+                <div class="d-flex table-data ">
+                    <table class="table table-striped table-dark">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome Cliente</th>
+                        <th>CPF</th>
+                        <th>E-mail</th>
+                    </tr>
+                    </thead>
+                        <tbody id="tbody">
+                        <tr>
+                            <td>1</td>
+                            <td>Nome cliente</td>
+                            <td>123123</td>
+                            <td>teste@gmail.com</td>
+                            <td><i class="fas fa-edit btnedit"></i></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
     </div>
 </main>
 
