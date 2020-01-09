@@ -9,8 +9,16 @@
 
     <script src="https://kit.fontawesome.com/5d48a46d27.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--Style Custom-->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<main>
+    <div class="container text-center">
+        <h1 class="py-4 bg-dark text-light rounded"><i class="fas fa-book-reader"></i> Loja Uniasselvi</h1>
+    </div>
+</main>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
