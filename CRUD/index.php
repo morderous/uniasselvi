@@ -25,11 +25,25 @@ require_once ("php/component.php");
 
         <div class="d-flex justify-content-center">
             <form action=""method="post" class="w-50">
-                <div class="py-2">
+                <div class="pt-2">
                     <?php inputElement("<i class=\"fas fa-fingerprint\"></i>", "ID Cliente", "id_cliente", ""); ?>
                 </div>
                 <div class="pt-2">
                     <?php inputElement("<i class=\"fas fa-id-card-alt\"></i>", "Nome do Cliente", "nome_cliente", ""); ?>
+                </div>
+                <div class="row pt-2">
+                    <div class="col">
+                        <?php inputElement("<i class=\"fab fa-ideal\"></i>", "CPF do Cliente", "cpf_cliente", ""); ?>
+                    </div>
+                    <div class="col">
+                        <?php inputElement("<i class=\"fas fa-envelope\"></i>", "E-mail do Cliente", "email_cliente", ""); ?>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <?php buttonElement("btn-create", "btn btn-success", "<i class=\"fas fa-user-plus\"></i>", "create","dat-toggle='tooltip' data-placement='bottom' title='Create'") ?>
+                    <?php buttonElement("btn-read", "btn btn-primary", "<i class=\"fas fa-sync-alt\"></i>", "refresh","dat-toggle='tooltip' data-placement='bottom' title='Refresh'") ?>
+                    <?php buttonElement("btn-update", "btn btn-light border", "<i class=\"fas fa-user-edit\"></i>", "update","dat-toggle='tooltip' data-placement='bottom' title='Update'") ?>
+                    <?php buttonElement("btn-delete", "btn btn-danger", "<i class=\"fas fa-user-times\"></i>", "delete","dat-toggle='tooltip' data-placement='bottom' title='Delete'") ?>
                 </div>
             </form>
         </div>
