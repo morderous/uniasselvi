@@ -10,7 +10,11 @@ body {
 }
 
 #sticky-footer {
-    flex-shrink: none;
+    flex-shrink: 0;
+    position: fixed;
+    bottom: 0;
+    height: 5%;
+    width: 100%;
 }
 
 /* Other Classes for Page Styling */
