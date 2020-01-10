@@ -30,7 +30,7 @@ ENGINE = InnoDB;
 -- Table `db_loja`.`tb_produto`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `db_loja`.`tb_produto` (
-  `idtb_produto` INT NOT NULL,
+  `idtb_produto` INT NOT NULL AUTO_INCREMENT,
   `nome_produto` VARCHAR(50) NULL,
   `valor_unitario_produto` DOUBLE NULL,
   `quantidade` INT NULL,
@@ -42,7 +42,7 @@ ENGINE = InnoDB;
 -- Table `db_loja`.`tb_pedido`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `db_loja`.`tb_pedido` (
-  `idtb_pedido` INT NOT NULL,
+  `idtb_pedido` INT NOT NULL AUTO_INCREMENT,
   `data pedido` DATETIME NULL,
   `cod_barras` VARCHAR(20) NULL,
   `fk_cliente` INT NOT NULL,
@@ -63,8 +63,8 @@ CREATE TABLE IF NOT EXISTS `db_loja`.`tb_pedido_produto` (
   `fk_pedido` INT NOT NULL,
   `fk_produto` INT NOT NULL,
   PRIMARY KEY (`fk_pedido`, `fk_produto`),
-  INDEX `fk_tb_pedido_has_tb_produto_tb_produto1_idx` (`fk_produto` ASC),
-  INDEX `fk_tb_pedido_has_tb_produto_tb_pedido1_idx` (`fk_pedido` ASC),
+  INDEX `fk_tb_pedido_has_tb_produto_tb_produto1_idx` (`fk_produto` ASC) ,
+  INDEX `fk_tb_pedido_has_tb_produto_tb_pedido1_idx` (`fk_pedido` ASC) ,
   CONSTRAINT `fk_tb_pedido_has_tb_produto_tb_pedido1`
     FOREIGN KEY (`fk_pedido`)
     REFERENCES `db_loja`.`tb_pedido` (`idtb_pedido`)
