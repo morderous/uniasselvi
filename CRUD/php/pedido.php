@@ -18,19 +18,24 @@ if (isset($_POST['delete'])){
 }
 
 function createData(){
-    $nomeproduto = textboxValue("nome_produto");
-    $valor = textboxValue("valor_unitario_produto");
+    $codbarras = textboxValue("cod_barras");
+    $idproduto = textboxValue("idtb_produto");
     $quantidade = textboxValue("quantidade");
+    $idcliente = textboxValue("idtb_cliente");
+    $status = textboxValue("status");
 
-    if ($nomeproduto && $valor && $quantidade){
+    if ($codbarras && $idproduto && $quantidade && $idcliente  && $status){
 
-        $sql = "INSERT INTO tb_produto (nome_produto, valor_unitario_produto, quantidade)
-                VALUES ('$nomeproduto', '$valor', '$quantidade')";
+        $sql = "INSERT INTO tb_pedido (data_pedido, cod_barras, fk_cliente, status) VALUES (now(), $codbarras, $idcliente, $status )";
+
 
         if (mysqli_query($GLOBALS['con'], $sql)){
-            echo TextNode("success", "Dados cadastrado(s) com sucesso! ");
+            $sql2 =  "INSERT INTO tb_pedido_produto (fk_pedido, fk_produto, quantidade) VALUES (last_insert_id(), $idproduto, $quantidade )";
+            if (mysqli_query($GLOBALS['con'], $sql2)){
+                echo TextNode("success", "Dados cadastrado(s) com sucesso! ");
+            }
         }else{
-            echo "Erro";
+            TextNode("error", "Verifique os dados");
         }
 
     }else{
@@ -55,7 +60,10 @@ function TextNode($classname, $msg){
 }
 
 function getData(){
-    $sql = "SELECT * FROM tb_pedido";
+    $sql = "Select idtb_pedido, data_pedido, cod_barras, fk_produto, tb_pedido_produto.quantidade, idtb_cliente, nome_cliente, status  from (((tb_pedido
+inner join tb_cliente on fk_cliente = tb_cliente.idtb_cliente)
+inner join tb_pedido_produto on idtb_pedido = fk_pedido )
+inner join tb_produto on fk_produto = idtb_produto);";
 
     $result = mysqli_query($GLOBALS['con'], $sql);
 
@@ -66,12 +74,15 @@ function getData(){
 }
 
 function UpdateData(){
-    $id = textboxValue("idtb_produto");
-    $nome = textboxValue("nome_produto");
-    $valorunitario = textboxValue("valor_unitario_produto");
+    $id = textboxValue("idtb_pedido");
+    $codbarras = textboxValue("cod_barras");
+    $idproduto = textboxValue("idtb_produto");
     $quantidade = textboxValue("quantidade");
+    $idcliente = textboxValue("idtb_cliente");
+    $status = textboxValue("status");
 
-    if ($id && $nome && $valorunitario && $quantidade){
+
+    if ($id && $codbarras && $quantidade && $idproduto && $idcliente && $status){
         $sql = "UPDATE tb_produto SET nome_produto='$nome', valor_unitario_produto='$valorunitario', quantidade='$quantidade'
                 WHERE idtb_produto='$id'";
         if (mysqli_query($GLOBALS['con'],$sql)){

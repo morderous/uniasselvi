@@ -2,6 +2,7 @@
 
 require_once ("php/component.php");
 require_once ("php/produto.php");
+include 'nav.php';
 ?>
 <!doctype html>
 <html lang="pt">
@@ -87,6 +88,8 @@ require_once ("php/produto.php");
             </div>
     </div>
 </main>
+<?php include 'footer.php';
+?>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

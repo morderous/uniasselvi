@@ -2,6 +2,8 @@
 
 require_once ("php/component.php");
 require_once ("php/pedido.php");
+include 'nav.php';
+
 ?>
 <!doctype html>
 <html lang="pt">
@@ -29,9 +31,6 @@ require_once ("php/pedido.php");
                     <?php inputElement("<i class=\"fas fa-fingerprint\"></i>", "ID Pedido", "idtb_pedido", ""); ?>
                 </div>
                 <div class="pt-2">
-                    <?php inputElement("<i class=\"fas fa-lightbulb\"></i>", "Data do Pedido", "datapedido", ""); ?>
-                </div>
-                <div class="pt-2">
                     <?php inputElement("<i class=\"fas fa-lightbulb\"></i>", "Código de Barras", "cod_barras", ""); ?>
                 </div>
                 <div class="row pt-2">
@@ -45,9 +44,6 @@ require_once ("php/pedido.php");
                 <div class="row pt-2">
                     <div class="col">
                         <?php inputElement("<i class=\"fas fa-dollar-sign\"></i>", "ID do Cliente", "idtb_cliente", ""); ?>
-                    </div>
-                    <div class="col">
-                        <?php inputElement("<i class=\"fas fa-sort-amount-up-alt\"></i>", "Nome do Cliente", "nome_cliente", ""); ?>
                     </div>
                 </div>
                 <div class="row pt-2">
@@ -90,9 +86,9 @@ require_once ("php/pedido.php");
 
                                 <tr>
                                     <td data-id="<?php echo $row['idtb_pedido']?>"><?php echo $row['idtb_pedido'];  ?></td>
-                                    <td data-id="<?php echo $row['idtb_pedido']?>"><?php echo $row['datapedido'];  ?></td>
+                                    <td data-id="<?php echo $row['idtb_pedido']?>"><?php echo $row['data_pedido'];  ?></td>
                                     <td data-id="<?php echo $row['idtb_pedido']?>"><?php echo $row['cod_barras'];  ?></td>
-                                    <td data-id="<?php echo $row['idtb_pedido']?>"><?php echo $row['idtb_produto'];  ?></td>
+                                    <td data-id="<?php echo $row['idtb_pedido']?>"><?php echo $row['fk_produto'];  ?></td>
                                     <td data-id="<?php echo $row['idtb_pedido']?>"><?php echo $row['quantidade'];  ?></td>
                                     <td data-id="<?php echo $row['idtb_pedido']?>"><?php echo $row['idtb_cliente'];  ?></td>
                                     <td data-id="<?php echo $row['idtb_pedido']?>"><?php echo $row['nome_cliente'];  ?></td>
@@ -109,8 +105,12 @@ require_once ("php/pedido.php");
                 </table>
             </div>
         </div>
+
     </div>
+
 </main>
+<?php include 'footer.php';
+?>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
