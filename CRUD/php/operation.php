@@ -11,6 +11,10 @@ if (isset($_POST['create'])){
     createData();
 }
 
+if (isset($_POST['update'])){
+    UpdateData();
+}
+
 
 
 function createData(){
@@ -58,5 +62,24 @@ function getData(){
     if (mysqli_num_rows($result)> 0){
         return $result;
 
+    }
+}
+
+function UpdateData(){
+    $id = textboxValue("id_cliente");
+    $nome = textboxValue("nome_cliente");
+    $cpf = textboxValue("cpf_cliente");
+    $email = textboxValue("email_cliente");
+
+    if ($id && $nome && $cpf && $email){
+        $sql = "UPDATE tb_cliente SET nome_cliente='$nome', cpf_cliente='$cpf', email_cliente='$email'
+                WHERE idtb_cliente='$id'";
+        if (mysqli_query($GLOBALS['con'],$sql)){
+        TextNode("success","Dados atualizados com sucesso!");
+        }else{
+            TextNode("error","Nao atualizados!");
+        }
+    }else{
+        TextNode("error","Selecione os dados");
     }
 }
