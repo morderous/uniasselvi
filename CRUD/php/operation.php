@@ -15,7 +15,9 @@ if (isset($_POST['update'])){
     UpdateData();
 }
 
-
+if (isset($_POST['delete'])){
+    deleteRecord();
+}
 
 function createData(){
     $clientenome = textboxValue("nome_cliente");
@@ -81,5 +83,17 @@ function UpdateData(){
         }
     }else{
         TextNode("error","Selecione os dados");
+    }
+}
+
+function deleteRecord(){
+    $id = (int)textboxValue("id_cliente");
+
+    $sql = "DELETE FROM tb_cliente WHERE idtb_cliente='$id'";
+
+    if (mysqli_query($GLOBALS['con'],$sql)){
+        TextNode("success","Dados excluidos com sucesso!");
+    }else {
+        TextNode("error", "Nao excluidos!");
     }
 }
