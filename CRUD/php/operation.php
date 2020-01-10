@@ -11,6 +11,8 @@ if (isset($_POST['create'])){
     createData();
 }
 
+
+
 function createData(){
     $clientenome = textboxValue("nome_cliente");
     $cpfcliente = textboxValue("cpf_cliente");
@@ -22,13 +24,13 @@ function createData(){
                 VALUES ('$clientenome', '$cpfcliente', '$emailcliente')";
 
         if (mysqli_query($GLOBALS['con'], $sql)){
-            echo "Cadastro feito com sucesso!";
+            echo TextNode("success", "Dados cadastrado(s) com sucesso! ");
         }else{
             echo "Erro";
         }
 
     }else{
-        echo "Falta dados nos campos!";
+        TextNode("error", "Coloque dados na(s) caixa(s) de texto");
 
     }
 }
@@ -39,5 +41,22 @@ function textboxValue($value){
         return false;
     }else{
         return $textbox;
+    }
+}
+
+function TextNode($classname, $msg){
+    $element = "<h6 class='$classname'>$msg</h6>";
+        echo $element;
+        
+}
+
+function getData(){
+    $sql = "SELECT * FROM tb_cliente";
+
+    $result = mysqli_query($GLOBALS['con'], $sql);
+
+    if (mysqli_num_rows($result)> 0){
+        return $result;
+
     }
 }

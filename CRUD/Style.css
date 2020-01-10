@@ -12,3 +12,15 @@ table .btnedit{
     color: lightcoral;
     cursor: pointer;
 }
+
+.success {
+    background-color: #28a745;
+    font-size: 1.2em;
+    padding: 1em;
+}
+
+.error{
+    background-color: tomato;
+    font-size: 1.2em;
+    padding: 1em;
+}

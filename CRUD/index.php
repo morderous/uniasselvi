@@ -57,16 +57,30 @@ require_once ("php/operation.php");
                         <th>Nome Cliente</th>
                         <th>CPF</th>
                         <th>E-mail</th>
+                        <th>Editar</th>
                     </tr>
                     </thead>
                         <tbody id="tbody">
-                        <tr>
-                            <td>1</td>
-                            <td>Nome cliente</td>
-                            <td>123123</td>
-                            <td>teste@gmail.com</td>
-                            <td><i class="fas fa-edit btnedit"></i></td>
-                        </tr>
+                        <?php
+                        if (isset($_POST['refresh'])){
+                            $result = getData();
+
+                            if ($result){
+                                while ($row = mysqli_fetch_assoc($result)){ ?>
+
+                                    <tr>
+                                        <td><?php echo $row['idtb_cliente'];  ?></td>
+                                        <td><?php echo $row['nome_cliente'];  ?></td>
+                                        <td><?php echo $row['cpf_cliente'];  ?></td>
+                                        <td><?php echo $row['email_cliente'];  ?></td>
+                                        <td><i class="fas fa-edit btnedit"></i></td>
+                                    </tr>
+
+                        <?php
+                                }
+                            }
+                        }
+                        ?>
                         </tbody>
                     </table>
                 </div>
